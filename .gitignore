@@ -106,5 +106,8 @@ typings/
 #LICENSE
 dist/index.js.LICENSE.txt
 
+#js bundels 
+dist/*.js
+
 #json
 utils/*.json
