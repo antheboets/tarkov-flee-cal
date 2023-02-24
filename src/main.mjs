@@ -1,4 +1,4 @@
-import logic from './lib/logic.mjs'
+import logic from '../lib/logic.mjs'
 import Fuse from 'fuse.js'
 import Chart from 'chart.js/auto'
 
