@@ -1,5 +1,5 @@
 const path = require('path')
-
+const fs = require('fs').promises
 //getting the args
 const argv = process.argv.slice(2)
 const args = {}
@@ -32,6 +32,23 @@ switch(args.optimazation){
         mode = "production"
     break
 }
+
+async function readJsonAsync(path){
+    return JSON.parse(await fs.readFile(`./${path}.json`, 'utf8'))
+}
+
+async function writeJsonAsync(filename,data){
+    await fs.writeFile(`${filename}.json`,JSON.stringify(data,null,3), function () {})
+}
+
+const preBundel = async ()=>{
+    let buildSettings = await readJsonAsync("./dist/build")
+    buildSettings.buildNr++
+    await writeJsonAsync("./dist/build",buildSettings)
+}
+
+preBundel()
+
 //printing optimazation mode
 console.log(`The optimazation mode: ${mode}`)
 //exporting module
