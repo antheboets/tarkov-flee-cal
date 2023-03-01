@@ -23,7 +23,7 @@ const updateItem = (item) =>{
     currentItem.bestPriceProfite = 0
     let fee = 0
     for(let i = 1; i <= itCount;i++){
-        fee = logic(intel,skill,item.value,i)
+        fee = logic(intel,skill,item.basePrice,i)
         currentItem.data.push({price:i,fee:fee})
         if(currentItem.bestPriceProfite <= i - fee){
             currentItem.bestPrice = i
